@@ -54,5 +54,31 @@
   }
   
   .download button:hover {
-    background-color: #4d54b8;  /*efeito hover*/
+    background-color: #6066a5;  /*efeito hover*/
   }
+
+  .share button{
+  padding: 10px 26px;
+  background-color: #4c53af;  /*fundo btn */
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.share button:hover {
+  background-color: #6066a5;  /*efeito hover*/
+}
+
+.tools button{
+  padding: 10px 26px;
+  background-color: #4c53af;  /*fundo btn */
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+
+}
+.tools button:hover{
+  background-color: #6066a5; /*hover*/
+}

@@ -47,7 +47,7 @@ const canvas = new fabric.Canvas('canvas', {
   
   // função para alterar a cor de fundo do canvas
   function changeBackgroundColor() {
-    const colors = ['#ff9999', '#99ff99', '#9999ff', '#f9f9f9', '#ffcc00'];
+    const colors = ['#ff9999', '#99ff99', '#9999ff', '#59BDE9', '#ffcc00'];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
   
     // atualiza a cor de fundo do canvas
@@ -63,3 +63,20 @@ const canvas = new fabric.Canvas('canvas', {
     link.click();
   }
   
+  async function share() {
+    const dataUrl = canvas.toDataURL({ format: 'png' });
+    const blob = await (await fetch(dataUrl)).blob();
+    const file = new File([blob], 'recado.png', { type: 'image/png' });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({
+            files: [file],
+            title: 'Seu Recado',
+            text: 'Confira o recado que eu criei!',
+        })
+        .then(() => console.log('Recado compartilhado com sucesso!'))
+        .catch((error) => console.error('Erro ao compartilhar:', error));
+    } else {
+        alert('O compartilhamento de arquivos não é suportado neste navegador.');
+    }
+}
